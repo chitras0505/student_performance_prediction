@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Predict Student Grade</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f4f8;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px 0;
+        }
+
+        .navbar {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #1abc9c;
+        }
+
+        .btn-logout {
+            background-color: #e74c3c;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
+        .btn-logout:hover {
+            background-color: #c0392b;
+        }
+
+        main {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 10px;
+            color: #34495e;
+        }
+
+        form select,
+        form input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button[type="submit"] {
+            background-color: #16a085;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #138d75;
+        }
+
+        .result-box {
+            background-color: #ecf0f1;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        .result-box h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .result-box p {
+            color: #34495e;
+            margin-bottom: 8px;
+        }
+
+        .back-button {
+            margin-top: 20px;
+        }
+
+        .back-button a {
+            text-decoration: none;
+            background-color: #e67e22;
+            padding: 10px 15px;
+            color: white;
+            border-radius: 6px;
+        }
+
+        .back-button a:hover {
+            background-color: #d35400;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>Student Performance</h1>
+            <div class="nav-links">
+                <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                <a href="{{ url_for('details') }}">Users</a>
+                <a href="{{ url_for('model_info') }}">Model Info</a>
+                <a href="{{ url_for('logout') }}" class="btn-logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        {% if not result %}
+        <h2>Predict Student Grade</h2>
+        <form method="POST" action="{{ url_for('predict') }}">
+            <label>Gender:
+                <select name="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </label>
+
+            <label>Race/Ethnicity:
+                <select name="race" required>
+                    <option value="group A">Group A</option>
+                    <option value="group B">Group B</option>
+                    <option value="group C">Group C</option>
+                    <option value="group D">Group D</option>
+                    <option value="group E">Group E</option>
+                </select>
+            </label>
+
+            <label>Parental Level of Education:
+                <select name="parent_edu" required>
+                    <option value="some high school">Some High School</option>
+                    <option value="high school">High School</option>
+                    <option value="some college">Some College</option>
+                    <option value="associate's degree">Associate's Degree</option>
+                    <option value="bachelor's degree">Bachelor's Degree</option>
+                    <option value="master's degree">Master's Degree</option>
+                </select>
+            </label>
+
+            <label>Lunch:
+                <select name="lunch" required>
+                    <option value="standard">Standard</option>
+                    <option value="free/reduced">Free/Reduced</option>
+                </select>
+            </label>
+
+            <label>Test Preparation Course:
+                <select name="prep" required>
+                    <option value="completed">Completed</option>
+                    <option value="none">None</option>
+                </select>
+            </label>
+
+            <label>Math Score:
+                <input type="number" name="math" min="0" max="100" required>
+            </label>
+
+            <label>Reading Score:
+                <input type="number" name="reading" min="0" max="100" required>
+            </label>
+
+            <label>Writing Score:
+                <input type="number" name="writing" min="0" max="100" required>
+            </label>
+
+            <button type="submit">Predict</button>
+        </form>
+        {% else %}
+        <div class="result-box">
+            <h3>Predicted Grade: {{ result }}</h3>
+
+            {% if result == 'Grade1' %}
+                <p>🌟 Excellent! You're in the top tier. Consider taking advanced placement courses or competitive exams.</p>
+                <p>✅ Tip: Start mentoring others, explore scholarships, and try leadership roles in school.</p>
+            {% elif result == 'Grade2' %}
+                <p>👍 Good performance. You're on the right track. Small improvements can boost your score higher!</p>
+                <p>✅ Tip: Revise consistently and focus on subjects where you scored lower.</p>
+            {% elif result == 'Grade3' %}
+                <p>🟡 Fair attempt. You passed but need more consistency. Identify weak areas and practice them more.</p>
+                <p>✅ Tip: Take help from teachers and use mock tests weekly.</p>
+            {% elif result == 'Fail' %}
+                <p>❗ You didn’t pass. Don’t give up—many successful people started with failure and grew from it.</p>
+                <p>✅ Tip: Focus on understanding core concepts and get regular feedback from teachers.</p>
+            {% endif %}
+        </div>
+
+        <div class="back-button">
+            <a href="{{ url_for('predict') }}">Go Back</a>
+        </div>
+        {% endif %}
+    </main>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Dashboard</title>
+    <style>
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f4f8;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px 0;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #1abc9c;
+        }
+
+        .btn-logout {
+            background-color: #e74c3c;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
+        .btn-logout:hover {
+            background-color: #c0392b;
+        }
+
+        /* Dashboard Content */
+        .dashboard-container {
+            margin-top: 40px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .welcome-section h2 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .welcome-section p {
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        /* Insights Section */
+        .insights-section {
+            margin-top: 40px;
+        }
+
+        .insights-section h3 {
+            margin-bottom: 20px;
+            color: #34495e;
+        }
+
+        .insight-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: space-between;
+        }
+
+        .card {
+            flex: 1 1 30%;
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .card p {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #16a085;
+        }
+
+        /* Tips Section */
+        .tips-section {
+            margin-top: 40px;
+        }
+
+        .tips-section h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .tips-section ul {
+            list-style: disc inside;
+            color: #555;
+            font-size: 1.05rem;
+        }
+
+        .tips-section ul li {
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 60px;
+            padding: 20px 0;
+            text-align: center;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid #ddd;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .insight-cards {
+                flex-direction: column;
+            }
+
+            .card {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>Student Performance Dashboard</h1>
+            <div class="nav-links">
+                <a href="{{ url_for('predict') }}">Predict</a>
+                <a href="{{ url_for('details') }}">Users</a>
+                <a href="{{ url_for('model_info') }}">Model Info</a>
+                <a href="{{ url_for('logout') }}" class="btn-logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container dashboard-container">
+        <section class="welcome-section">
+            <h2>Welcome, {{ session['user'] }}!</h2>
+            <p>
+                Empower your educational journey with insights derived from comprehensive data analysis. This dashboard offers a holistic view of student performance, enabling informed decisions to enhance learning outcomes.
+            </p>
+            <p>
+                Navigate through various sections to explore predictive analytics, user statistics, and detailed model information, all designed to support academic excellence.
+            </p>
+        </section>
+
+        <!--  -->
+
+        <section class="tips-section">
+            <h3>Enhancing Academic Performance</h3>
+            <ul>
+                <li><strong>Parental Involvement:</strong> Active participation of parents in educational activities significantly boosts student performance.</li>
+                <li><strong>Consistent Attendance:</strong> Regular attendance is crucial for academic success and knowledge retention.</li>
+                <li><strong>Access to Resources:</strong> Utilizing available educational resources, such as tutoring and online materials, enhances learning outcomes.</li>
+                <li><strong>Balanced Lifestyle:</strong> Adequate sleep, nutrition, and physical activity contribute to better concentration and academic performance.</li>
+                <li><strong>Effective Study Habits:</strong> Developing structured study routines and time management skills leads to improved academic results.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Student Performance Dashboard. All rights reserved.</p>
+    </footer>
+</body>
+</html>

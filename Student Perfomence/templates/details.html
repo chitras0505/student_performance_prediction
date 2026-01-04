@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Registration Details</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f0f4f8; color: #333; line-height: 1.6; }
+        .container { width: 90%; max-width: 1200px; margin: auto; padding: 20px 0; }
+
+        .navbar { background-color: #2c3e50; color: white; padding: 15px 0; box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); }
+        .navbar .container { display: flex; justify-content: space-between; align-items: center; }
+        .navbar h1 { font-size: 1.8rem; font-weight: 700; }
+        .nav-links a {
+            color: white; text-decoration: none; margin-left: 25px; font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover { color: #1abc9c; }
+        .btn-logout { background-color: #e74c3c; padding: 8px 15px; border-radius: 4px; font-weight: 700; }
+        .btn-logout:hover { background-color: #c0392b; }
+
+        .details-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            margin-top: 40px;
+        }
+
+        .details-container h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 10px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px 16px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .footer {
+            margin-top: 60px;
+            padding: 20px 0;
+            text-align: center;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>Student Performance Dashboard</h1>
+            <div class="nav-links">
+                <a href="{{ url_for('predict') }}">Predict</a>
+                <a href="{{ url_for('details') }}">Users</a>
+                <a href="{{ url_for('model_info') }}">Model Info</a>
+                <a href="{{ url_for('logout') }}" class="btn-logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container details-container">
+        <h2>My Registration Details</h2>
+        {% if user %}
+        <table>
+            <tr><th>Field</th><th>Value</th></tr>
+            <tr><td>Username</td><td>{{ user.username }}</td></tr>
+            <tr><td>Full Name</td><td>{{ user.full_name }}</td></tr>
+            <tr><td>Email</td><td>{{ user.email }}</td></tr>
+            <tr><td>Phone</td><td>{{ user.phone }}</td></tr>
+            <tr><td>Address</td><td>{{ user.address }}</td></tr>
+        </table>
+        {% else %}
+            <p style="text-align:center; color:#888;">No user details found.</p>
+        {% endif %}
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Student Performance Dashboard. All rights reserved.</p>
+    </footer>
+</body>
+</html>

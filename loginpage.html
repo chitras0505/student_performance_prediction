@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <style>
+    body {
+      background: #f0f0f0;
+      font-family: Arial;
+      background: url('https://pagedone.io/asset/uploads/1702362010.png') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial;
+      display: flex;             
+      justify-content: center;   
+      align-items: center;        
+      height: 100vh;             
+      margin: 0; 
+    }
+    .error {
+      color: red;
+      font-size: 12px;
+      text-align: left;
+      margin-bottom: 5px;
+    }
+    h2 {
+      align-items: center;
+      justify-content: center;
+      gap: 8px; 
+    }
+    .logo {
+      width: 20px;  
+      height: 20px;
+    }
+    .box {
+      width: 280px;
+      background: white;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      text-align: center;
+    }
+    input {
+      width: 280px;
+      padding: 8px;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      border: none;
+      background: #3b7ddd;
+      color: white;
+    }
+    button:hover {
+      background-color: #017ed8;
+    }
+  </style>
+</head>
+<body> 
+
+  <div class="box" id="loginBox">
+    <h2>
+      <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="logo" class="logo">
+        Login</h2>
+    <form onsubmit="return checkLogin()">
+      <div id="userError" class="error"></div>
+      <input id="username" type="text" placeholder="Email">
+      <div id="passError" class="error"></div>
+      <input id="password" type="password" placeholder="Password">
+      <button>Login</button>
+  </div>
+
+  <script>
+    function checkLogin() {
+  let user = document.getElementById("username").value.trim();
+  let pass = document.getElementById("password").value.trim();
+  
+  let userError = document.getElementById("userError");
+  let passError = document.getElementById("passError");
+
+  userError.innerHTML = "";
+  passError.innerHTML = "";
+
+  let emailPattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+  let isValid = true;
+
+  if (user === "") {
+    userError.innerHTML = "Please enter email address";
+    isValid = false;
+    setTimeout(() => { userError.innerHTML = ""; }, 3000);
+  }
+  
+  else if (!emailPattern.test(user)) {
+    userError.innerHTML = "Invalid email address";
+    isValid = false;
+    setTimeout(() => { userError.innerHTML = ""; }, 3000);
+  }
+
+  if (pass === "") {
+    passError.innerHTML = "Please enter password";
+    isValid = false;
+    setTimeout(() => { passError.innerHTML = ""; }, 3000);
+  }
+  else if (pass !== "123") {
+    passError.innerHTML = "Invalid password";
+    isValid = false;
+    setTimeout(() => { passError.innerHTML = ""; }, 3000);
+  }
+
+  if (isValid) {
+    document.body.style.background = "url('data:image/jpeg;base64,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') no-repeat center center fixed";
+    document.body.style.backgroundSize = "cover";
+    document.body.innerHTML = `
+    <style>
+        body {
+          margin: 0;
+          font-family: Arial;
+          display: flex;
+          height: 100vh;
+        }
+        .sidebar {
+          width: 130px;
+          background: #3b7ddd;
+          color: white;
+          display: flex;
+          flex-direction: column;
+          padding: 20px;
+          height: 100vh;
+        }
+        .sidebar a {
+          color: white;
+          text-decoration: none;
+          margin: 10px 0;
+        }
+        .content {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+        }
+        .two-box-container {
+          display: flex;             
+          justify-content: center;   
+          align-items: center;        
+          gap: 20px;                 
+          height: 100%;               
+        }
+        .left-box, .right-box {
+         background: white;
+         padding: 20px;
+         width: 200px;               
+         border-radius: 8px;
+         text-align: center;
+        }
+        .topbar {
+         position: absolute;
+         top: 5px;
+         right: 5px;
+         display: flex;
+         justify-content: flex-end;  
+         align-items: center;
+         gap: 15px;                 
+         padding: 10px; 
+        }
+        .welcome {
+         font-size: 14px;
+         font-weight: bold;
+         color: #333;              
+        }
+        .main {
+          flex: 1;
+          padding: 20px;
+          font-size: 20px;
+        }
+        .main h2 {
+        margin-top: 5px;
+        }  
+        h2{
+         position: absolute;
+         top: 7px;
+         left: 180px;
+         padding: 10px;
+        }
+        button.logout {     
+          border: none;
+          padding: 6px 12px;   
+          font-size: 14px;     
+          width: auto;         
+          border-radius: 4px; 
+        }
+        button.logout:hover {
+          background: #c9302c;
+        } 
+      </style>
+       <div class="sidebar">
+        <h3>Menu</h3>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">User Information</a>
+      </div>
+      <div class="content">
+        <div class="topbar">
+          <span class="welcome">Welcome, ${user}!</span>
+          <button class="logout" onclick="location.reload()">Logout</button>
+        </div>
+        <div class="main">
+          <h2>Home</h2>
+        </div>
+        <div class="two-box-container">
+         <div class="left-box">
+          <h3>Left Box</h3>
+            <p>This is the left content.</p>
+        </div>
+         <div class="right-box">
+            <h3>Right Box</h3>
+            <p>This is the right content.</p>
+         </div>
+      </div>
+</div>
+      </div>
+    `;
+  }
+  return false; 
+}
+</script>
+
+</body>
+</html>
+
+
+
+venv/Scripts/activate 
+
+flask 
+
+app.py

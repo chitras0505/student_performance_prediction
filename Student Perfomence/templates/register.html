@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Register - Student Grade Predictor</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .register-container {
+            background: #fff;
+            padding: 35px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            width: 420px;
+        }
+
+        h2 {
+            margin-bottom: 24px;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 16px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px 0;
+            border: none;
+            border-radius: 6px;
+            background-color: #27ae60;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #1e8449;
+        }
+
+        p.error {
+            color: red;
+            margin-bottom: 16px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        p.login-link {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        p.login-link a {
+            color: #27ae60;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        p.login-link a:hover {
+            text-decoration: underline;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: #34495e;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h2>Create Your Account</h2>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        <form method="POST" action="{{ url_for('register') }}">
+            <label>Full Name</label>
+<input type="text" name="full_name" placeholder="Enter your full name" required />
+
+<label>Address</label>
+<input type="text" name="address" placeholder="Enter your address" required />
+
+
+            <label>Username</label>
+            <input type="text" name="username" placeholder="Choose a username" required />
+
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Enter your email" required />
+
+            <label>Phone Number</label>
+            <input type="tel" name="phone" placeholder="Enter your phone number" required pattern="[0-9]{10}" title="Enter 10 digit phone number" />
+
+            <label>Date of Birth</label>
+            <input type="date" name="dob" required />
+
+            <label>Gender</label>
+            <select name="gender" required>
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Choose a password" required />
+
+            <button type="submit">Register</button>
+        </form>
+
+        <p class="login-link">
+            Already have an account?
+            <a href="{{ url_for('login') }}">Login here</a>
+        </p>
+    </div>
+</body>
+</html>

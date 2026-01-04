@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Model Explanation - Student Grade Predictor</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f4f8;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #1abc9c;
+        }
+
+        .btn-logout {
+            background-color: #e74c3c;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
+        .btn-logout:hover {
+            background-color: #c0392b;
+        }
+
+        main {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 900px;
+            margin: 50px auto;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        p {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #34495e;
+        }
+
+        em {
+            display: block;
+            margin-top: 30px;
+            font-style: italic;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <h1>Student Performance</h1>
+            <div class="nav-links">
+                <a href="{{ url_for('predict') }}">Predict</a>
+                <a href="{{ url_for('details') }}">Users</a>
+                <a href="{{ url_for('model_info') }}">Model Info</a>
+                <a href="{{ url_for('logout') }}" class="btn-logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <h2>Model Explanation</h2>
+
+        <p>
+            The student grade prediction system is powered by a <strong>Random Forest Classifier</strong>, which is one of the most reliable and powerful machine learning algorithms for classification tasks.
+        </p>
+
+        <p>
+            A Random Forest is essentially a collection of decision trees. Each decision tree is trained on a random subset of the dataset and provides a prediction. The final output is determined by combining the predictions from all individual trees using a majority voting system.
+        </p>
+
+        <p>
+            This ensemble approach helps in reducing overfitting and improving accuracy, as it balances the bias-variance tradeoff. It’s like asking a panel of experts and relying on the consensus instead of a single opinion.
+        </p>
+
+        <p>
+            In our application, the Random Forest model was trained using features like math, reading, and writing scores, gender, ethnicity, parental education, and lunch details. The model achieved high accuracy and robustness across different student backgrounds.
+        </p>
+
+        <em>This architecture provides both interpretability and strong performance, making it ideal for educational grade prediction scenarios.</em>
+    </main>
+
+</body>
+</html>
