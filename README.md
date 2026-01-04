@@ -24,8 +24,4 @@ This project considers multiple factors and gives better prediction.
 - HTML, CSS
 
 ## How to Run
-
-1. open anaconda prompt
-2. activate myenv
-3. cd C:\Users\chitr\OneDrive\Desktop\Student Perfomence
-4. python app.py
+   python app.py
