@@ -21,7 +21,7 @@ This project considers multiple factors and gives better prediction.
 - Python
 - Machine Learning
 - VS Code
-- HTML, CSS (if applicable)
+- HTML, CSS
 
 ## How to Run
 
