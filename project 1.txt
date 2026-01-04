@@ -1,0 +1,12 @@
+https://github.com/chitras0505/project.git
+
+
+Interview la neenga ippadi sollalaam:
+
+“I have uploaded my complete source code on GitHub.
+I have tested the project locally, and this is the expected output.
+I can also walk you through the code.”
+
+“I have uploaded my complete source code on GitHub.
+I have tested the project locally, and the expected output is included as screenshots.
+The execution steps are clearly mentioned in the README file.”
