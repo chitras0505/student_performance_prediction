@@ -5,13 +5,12 @@ The Student Performance Prediction System is a Machine Learning based web applic
 
 The system analyzes student-related inputs such as:
 
-Math Score
-Reading Score
-Writing Score
-Gender
-Lunch Type
-Parental Education
-Test Preparation Course
+Math Score,
+Reading Score,
+Writing Score,
+Gender,
+Parental Education,
+Test Preparation Course,
 
 and predicts the student's performance category using the Random Forest Classifier algorithm.
 This project helps educational institutions identify students who may require additional academic support and enables data-driven decision-making for improving student outcomes.
