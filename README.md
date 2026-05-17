@@ -1,4 +1,4 @@
-## Student Performance Prediction System
+# Student Performance Prediction System
 📌 Project Overview
 
 The Student Performance Prediction System is a Machine Learning based web application developed to predict student academic performance using various educational and demographic factors.
@@ -62,6 +62,9 @@ It improves:
 - Decision-making in education systems
 
 ## 👩‍💻 Developed By
-Chitra S
-BCA Student
-Passionate about Python, Machine Learning, and Full Stack Development.
+**Chitra S**
+* Final Year BCA Student
+* Passionate about Full Stack Development
+
+## 📬 Contact
+* 📧 Email: chitras05052006@gmail.com
