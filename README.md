@@ -1,4 +1,4 @@
-#Student Performance Prediction System
+## Student Performance Prediction System
 📌 Project Overview
 
 The Student Performance Prediction System is a Machine Learning based web application developed to predict student academic performance using various educational and demographic factors.
@@ -14,7 +14,6 @@ Parental Education
 Test Preparation Course
 
 and predicts the student's performance category using the Random Forest Classifier algorithm.
-
 This project helps educational institutions identify students who may require additional academic support and enables data-driven decision-making for improving student outcomes.
 
 ## Features
