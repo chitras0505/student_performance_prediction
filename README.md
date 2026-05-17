@@ -1,27 +1,44 @@
-# Student Performance Prediction
+#Student Performance Prediction System
+📌 Project Overview
 
-## About
-This project predicts student performance using Machine Learning.
-It uses the Random Forest algorithm to analyze student data and give performance results.
+The Student Performance Prediction System is a Machine Learning based web application developed to predict student academic performance using various educational and demographic factors.
 
-## Why this project
-Traditional methods use only marks and attendance.
-This project considers multiple factors and gives better prediction.
+The system analyzes student-related inputs such as:
 
-## Algorithm Used
-- Random Forest
+Math Score
+Reading Score
+Writing Score
+Gender
+Lunch Type
+Parental Education
+Test Preparation Course
+
+and predicts the student's performance category using the Random Forest Classifier algorithm.
+
+This project helps educational institutions identify students who may require additional academic support and enables data-driven decision-making for improving student outcomes.
 
 ## Features
-- Predicts student performance
-- Identifies students who need support
-- Gives accurate results
-- Saves time for teachers
+- User Login & Registration
+- Student Performance Prediction
+- Random Forest ML Model
+- Dashboard & User Details
+- Performance Suggestions
 
-## Tools & Technologies
+## Technologies Used
 - Python
+- Flask
 - Machine Learning
-- VS Code
-- HTML, CSS
+- HTML, CSS, JavaScript
+- SQLite
 
 ## How to Run
-   python app.py
+
+1. Open Anaconda Prompt
+2. Activate environment
+
+```bash
+activate myenv
+
+
+## Machine Learning Algorithm
+- Random Forest Classifier
