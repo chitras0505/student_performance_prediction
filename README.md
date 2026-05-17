@@ -29,6 +29,9 @@ This project helps educational institutions identify students who may require ad
 - HTML, CSS, JavaScript
 - SQLite
 
+## Machine Learning Algorithm
+- Random Forest Classifier
+
 ## How to Run
 
 1. Open Anaconda Prompt
@@ -36,7 +39,29 @@ This project helps educational institutions identify students who may require ad
 
 ```bash
 activate myenv
+3. Go to project folder
+cd C:\Users\chitr\OneDrive\Desktop\Student Perfomence
+4. Run application
+python app.py
+5. Open browser:
+http://127.0.0.1:5000
+```
 
+## Future Enhancements
+Data Visualization
+Admin Dashboard
+Cloud Deployment
+Advanced Analytics
 
-## Machine Learning Algorithm
-- Random Forest Classifier
+## 📈 Project Outcome
+This project demonstrates how Machine Learning can be integrated with web development to solve real-world educational problems efficiently.
+It improves:
+- Student monitoring
+- Academic analysis
+- Early identification of weak performers
+- Decision-making in education systems
+
+## 👩‍💻 Developed By
+Chitra S
+BCA Student
+Passionate about Python, Machine Learning, and Full Stack Development.
